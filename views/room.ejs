@@ -19,11 +19,11 @@ width:400px;
 <body>
      	<h3 id="show-peer"></h3>
      	<div style="display:flex;justify-content:space-around;margin:10px;">
-     	<div style="width:500px;height:300px;border:2px solid ;" id="ourVideo">Our Video
+     	<div style="width:600px;height:300px;border:2px solid ;" id="ourVideo">
 <video id="our_vids"></video>
         </div>
 
-         <div style="width:500px;height:300px;border:2px solid ;" id="remoteVideo">
+         <div style="width:600px;height:300px;border:2px solid ;" id="remoteVideo">
              <video id="vids"></video>
 
          </div>
@@ -39,6 +39,8 @@ width:400px;
 
 <script >
 window.addEventListener('load',(event)=>{
+
+    
 var peer=new Peer();
 var mystream;
 var peerList=[]
@@ -61,6 +63,11 @@ call.on('stream',remoteStream=>{
     currentPeer=call.peerConnection;
 peerList.push(call.peer)
 }
+})
+call.on('close',()=>{
+    let video=document.getElementById("our_vids");
+    video.remove();
+
 })
 
     })
@@ -115,6 +122,11 @@ call.on('stream',(remoteStream)=>{
 peerList.push(call.peer)
 }
 })
+call.on('close',()=>{
+    let video=document.getElementById("vids");
+    video.remove();
+
+})
 
     })
     .catch(e=>console.log(e+"error"));
@@ -137,7 +149,7 @@ function addOurVideo(stream){
     let video=document.getElementById("our_vids");
     video.srcObject=stream;
     
-video.classList.add("video");
+//video.classList.add("video");
             video.play();
     
    

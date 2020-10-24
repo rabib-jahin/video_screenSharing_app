@@ -8,9 +8,14 @@ body{
 
 	}
 
-video{
+#vids{
 		 height: 300px;
-         width: 400px;
+         width: 600px;
+         object-fit: cover;
+       }
+#our_vids{
+         height: 300px;
+         width: 600px;
          object-fit: cover;
        }
 

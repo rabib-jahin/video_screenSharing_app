@@ -3,7 +3,7 @@ const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 const { v4: uuidV4 } = require('uuid');
-
+const port=process.env.PORT||3000;
 // const ExpressPeerServer = require('peer').ExpressPeerServer;
 // const peerServer = ExpressPeerServer(server, {
 //   debug: true
@@ -51,6 +51,6 @@ io.on('connection', socket =>{
 	
 })
 
-server.listen(3000, () =>{
-	console.log("Serving port 3000")
+server.listen(port, () =>{
+	console.log(`Serving port `+port)
 });
